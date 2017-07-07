@@ -6,6 +6,8 @@ RUN apk update && apk add --no-cache --virtual .build-deps bash git \
     && ./build \
     && mv bin/ct /usr/bin/ && mv Dockerfile.build-scratch /tmp \
     && rm -rf $GOPATH \
-    && apk del --no-cache .build-deps
+    && apk del --no-cache .build-deps \
+    && echo "finished"
+
 WORKDIR /tmp
 ENTRYPOINT ["/usr/bin/ct"]
